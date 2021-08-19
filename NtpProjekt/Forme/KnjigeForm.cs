@@ -12,12 +12,14 @@ namespace NtpProjekt.Forme
 {
     public partial class KnjigeForm : Form
     {
+        Knjige trazeni;
         KnjiznicaEntities obj = new KnjiznicaEntities();
         public KnjigeForm()
         {
             InitializeComponent();
             dKategorijaCombo.DataSource = obj.Kategorije.ToList();
             dKategorijaCombo.DisplayMember = "Kategorija";
+            UrediBtn.Enabled = false;
         }
 
         private void DodajBtn_Click(object sender, EventArgs e)
@@ -41,28 +43,13 @@ namespace NtpProjekt.Forme
 
         private void ukloniBtn_Click(object sender, EventArgs e)
         {
-
-            var trazeni = obj.Knjige.Where(x => x.ISBN == uIsbnTxt.Text).FirstOrDefault();
+            trazeni = obj.Knjige.Where(x => x.ISBN == uIsbnTxt.Text).FirstOrDefault();
             if (trazeni != null)
             {
-                try
-                {
-                    if (trazeni.Količina >= 0)
-                    {
-                        var kolicinaKnjiga = trazeni.Količina - Convert.ToInt32(uKolicinaNumeric.Value);
-                        trazeni.Količina = kolicinaKnjiga;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Nedovoljno knjiga za oduzimanje!");
-                    }
-                    obj.SaveChanges();
-                }
-                catch(Exception)
-                {
-                    MessageBox.Show("Ne postoji knjiga s traženim ISBN-om!");
-                }
+                UrediKnjigeForm forma = new UrediKnjigeForm(trazeni, obj);
+                forma.Show();
             }
+
         }
 
         private void traziBtn_Click(object sender, EventArgs e)
@@ -78,6 +65,7 @@ namespace NtpProjekt.Forme
                 uNazivTxt.ReadOnly = true;
                 uDostupnaTxt.ReadOnly = true;
                 uAutorTxt.ReadOnly = true;
+                UrediBtn.Enabled = true;
             }
             else
             {

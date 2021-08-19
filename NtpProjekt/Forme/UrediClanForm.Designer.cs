@@ -174,7 +174,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(815, 382);
+            this.ClientSize = new System.Drawing.Size(364, 281);
             this.Controls.Add(this.groupBox1);
             this.Name = "UrediClanForm";
             this.Text = "UrediClanForm";

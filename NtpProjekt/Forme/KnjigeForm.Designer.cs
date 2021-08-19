@@ -43,7 +43,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.uKolicinaNumeric = new System.Windows.Forms.NumericUpDown();
             this.traziBtn = new System.Windows.Forms.Button();
-            this.ukloniBtn = new System.Windows.Forms.Button();
+            this.UrediBtn = new System.Windows.Forms.Button();
             this.uDostupnaTxt = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.uAutorTxt = new System.Windows.Forms.TextBox();
@@ -182,7 +182,7 @@
             // 
             this.groupBox2.Controls.Add(this.uKolicinaNumeric);
             this.groupBox2.Controls.Add(this.traziBtn);
-            this.groupBox2.Controls.Add(this.ukloniBtn);
+            this.groupBox2.Controls.Add(this.UrediBtn);
             this.groupBox2.Controls.Add(this.uDostupnaTxt);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.uAutorTxt);
@@ -223,16 +223,16 @@
             this.traziBtn.UseVisualStyleBackColor = true;
             this.traziBtn.Click += new System.EventHandler(this.traziBtn_Click);
             // 
-            // ukloniBtn
+            // UrediBtn
             // 
-            this.ukloniBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ukloniBtn.Location = new System.Drawing.Point(3, 242);
-            this.ukloniBtn.Name = "ukloniBtn";
-            this.ukloniBtn.Size = new System.Drawing.Size(326, 38);
-            this.ukloniBtn.TabIndex = 2;
-            this.ukloniBtn.Text = "Ukloni";
-            this.ukloniBtn.UseVisualStyleBackColor = true;
-            this.ukloniBtn.Click += new System.EventHandler(this.ukloniBtn_Click);
+            this.UrediBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.UrediBtn.Location = new System.Drawing.Point(3, 242);
+            this.UrediBtn.Name = "UrediBtn";
+            this.UrediBtn.Size = new System.Drawing.Size(326, 38);
+            this.UrediBtn.TabIndex = 2;
+            this.UrediBtn.Text = "Uredi";
+            this.UrediBtn.UseVisualStyleBackColor = true;
+            this.UrediBtn.Click += new System.EventHandler(this.ukloniBtn_Click);
             // 
             // uDostupnaTxt
             // 
@@ -357,7 +357,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button traziBtn;
-        private System.Windows.Forms.Button ukloniBtn;
+        private System.Windows.Forms.Button UrediBtn;
         private System.Windows.Forms.TextBox uDostupnaTxt;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label5;

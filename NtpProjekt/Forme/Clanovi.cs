@@ -19,13 +19,15 @@ namespace NtpProjekt
         public ClanoviForm()
         {
             InitializeComponent();
+            uClanskiTxt.Enabled = false;
+            dClanskiTxt.Enabled = false;
         }
 
         private void DodajBtn_Click(object sender, EventArgs e)
         {
-            if (dvoClanskiTxt.Text.Length < 3 && dClanskiTxt.Text.Length == 6 && dvoClanskiTxt.Text.Length > 0)
+            if (uDvoClanskiTxt.Text.Length == 2 && dClanskiTxt.Text.Length == 6)
             {
-                string clanskiBr = dvoClanskiTxt.Text + "/" + dClanskiTxt.Text;
+                string clanskiBr = uDvoClanskiTxt.Text + "/" + dClanskiTxt.Text;
                 var ime = dImeTxt.Text;
                 var prezime = dPrezimeTxt.Text;
                 var telefon = dTelTxt.Text;
@@ -52,7 +54,7 @@ namespace NtpProjekt
 
         private void pretragaBtn_Click(object sender, EventArgs e)
         {
-            trazen = obj.Clanovi.Where(x => x.clanskiBroj == uClanskiTxt.Text).FirstOrDefault();
+            trazen = obj.Clanovi.Where(x => x.clanskiBroj == (uDvoClanskiTxt.Text + "/" + uClanskiTxt.Text)).FirstOrDefault();
             if (trazen != null)
             {
                 uImeTxt.Text = trazen.ime;
@@ -87,6 +89,24 @@ namespace NtpProjekt
             {
                 UrediClanForm forma = new UrediClanForm(trazen, obj);
                 forma.Show();
+            }
+        }
+
+        private void dvoClanskiTxt_TextChanged(object sender, EventArgs e)
+        {
+            if(dvoClanskiTxt.Text.Length == 2)
+            {
+                dClanskiTxt.Enabled = true;
+                dClanskiTxt.Focus();
+            }
+        }
+
+        private void uDvoClanskiTxt_TextChanged(object sender, EventArgs e)
+        {
+            if (uDvoClanskiTxt.Text.Length == 2)
+            {
+                uClanskiTxt.Enabled = true;
+                uClanskiTxt.Focus();
             }
         }
     }

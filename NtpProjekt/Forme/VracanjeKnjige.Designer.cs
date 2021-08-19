@@ -31,20 +31,25 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.iznosTxt = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.clanskiTxt = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.posudbaPicker = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.povratakPicker = new System.Windows.Forms.DateTimePicker();
             this.vratiBtn = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.idPosudbeTxt = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.isbnTxt = new System.Windows.Forms.TextBox();
+            this.provjeraBtn = new System.Windows.Forms.Button();
+            this.ponistiBtn = new System.Windows.Forms.Button();
+            this.produziBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 191);
+            this.label1.Location = new System.Drawing.Point(16, 238);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(80, 13);
             this.label1.TabIndex = 0;
@@ -53,99 +58,152 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 54);
+            this.label2.Location = new System.Drawing.Point(13, 125);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 13);
+            this.label2.Size = new System.Drawing.Size(64, 13);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Unesi članski broj:";
+            this.label2.Text = "Članski broj:";
             // 
             // iznosTxt
             // 
-            this.iznosTxt.Location = new System.Drawing.Point(113, 188);
+            this.iznosTxt.Location = new System.Drawing.Point(113, 235);
             this.iznosTxt.Name = "iznosTxt";
             this.iznosTxt.ReadOnly = true;
             this.iznosTxt.Size = new System.Drawing.Size(100, 20);
             this.iznosTxt.TabIndex = 1;
             // 
-            // textBox2
+            // clanskiTxt
             // 
-            this.textBox2.Location = new System.Drawing.Point(113, 51);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 1;
+            this.clanskiTxt.Location = new System.Drawing.Point(113, 122);
+            this.clanskiTxt.Name = "clanskiTxt";
+            this.clanskiTxt.Size = new System.Drawing.Size(100, 20);
+            this.clanskiTxt.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 90);
+            this.label3.Location = new System.Drawing.Point(13, 147);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(82, 13);
             this.label3.TabIndex = 0;
             this.label3.Text = "Datum posudbe";
             // 
-            // dateTimePicker1
+            // posudbaPicker
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(16, 106);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(110, 20);
-            this.dateTimePicker1.TabIndex = 2;
+            this.posudbaPicker.Location = new System.Drawing.Point(16, 163);
+            this.posudbaPicker.Name = "posudbaPicker";
+            this.posudbaPicker.Size = new System.Drawing.Size(110, 20);
+            this.posudbaPicker.TabIndex = 2;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 136);
+            this.label4.Location = new System.Drawing.Point(13, 193);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(83, 13);
             this.label4.TabIndex = 0;
             this.label4.Text = "Datum povratka";
             // 
-            // dateTimePicker2
+            // povratakPicker
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(16, 152);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(110, 20);
-            this.dateTimePicker2.TabIndex = 2;
+            this.povratakPicker.Location = new System.Drawing.Point(16, 209);
+            this.povratakPicker.Name = "povratakPicker";
+            this.povratakPicker.Size = new System.Drawing.Size(110, 20);
+            this.povratakPicker.TabIndex = 2;
             // 
             // vratiBtn
             // 
             this.vratiBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.vratiBtn.Location = new System.Drawing.Point(0, 229);
+            this.vratiBtn.Location = new System.Drawing.Point(0, 313);
             this.vratiBtn.Name = "vratiBtn";
-            this.vratiBtn.Size = new System.Drawing.Size(230, 41);
+            this.vratiBtn.Size = new System.Drawing.Size(232, 41);
             this.vratiBtn.TabIndex = 3;
             this.vratiBtn.Text = "Vrati";
             this.vratiBtn.UseVisualStyleBackColor = true;
+            this.vratiBtn.Click += new System.EventHandler(this.vratiBtn_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(13, 15);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(96, 13);
+            this.label5.Size = new System.Drawing.Size(98, 13);
             this.label5.TabIndex = 0;
-            this.label5.Text = "Unesi ISBN knjige:";
+            this.label5.Text = "Unesi ID narudžbe:";
+            // 
+            // idPosudbeTxt
+            // 
+            this.idPosudbeTxt.Location = new System.Drawing.Point(113, 12);
+            this.idPosudbeTxt.Name = "idPosudbeTxt";
+            this.idPosudbeTxt.Size = new System.Drawing.Size(100, 20);
+            this.idPosudbeTxt.TabIndex = 1;
+            this.idPosudbeTxt.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(13, 99);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(66, 13);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "ISBN knjige:";
             // 
             // isbnTxt
             // 
-            this.isbnTxt.Location = new System.Drawing.Point(113, 12);
+            this.isbnTxt.Location = new System.Drawing.Point(113, 96);
             this.isbnTxt.Name = "isbnTxt";
             this.isbnTxt.Size = new System.Drawing.Size(100, 20);
             this.isbnTxt.TabIndex = 1;
-            this.isbnTxt.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // provjeraBtn
+            // 
+            this.provjeraBtn.Location = new System.Drawing.Point(160, 38);
+            this.provjeraBtn.Name = "provjeraBtn";
+            this.provjeraBtn.Size = new System.Drawing.Size(58, 23);
+            this.provjeraBtn.TabIndex = 4;
+            this.provjeraBtn.Text = "Provjeri";
+            this.provjeraBtn.UseVisualStyleBackColor = true;
+            this.provjeraBtn.Click += new System.EventHandler(this.provjeraBtn_Click);
+            // 
+            // ponistiBtn
+            // 
+            this.ponistiBtn.Location = new System.Drawing.Point(96, 38);
+            this.ponistiBtn.Name = "ponistiBtn";
+            this.ponistiBtn.Size = new System.Drawing.Size(58, 23);
+            this.ponistiBtn.TabIndex = 4;
+            this.ponistiBtn.Text = "Poništi";
+            this.ponistiBtn.UseVisualStyleBackColor = true;
+            this.ponistiBtn.Click += new System.EventHandler(this.ponistiBtn_Click);
+            // 
+            // produziBtn
+            // 
+            this.produziBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.produziBtn.Location = new System.Drawing.Point(0, 272);
+            this.produziBtn.Name = "produziBtn";
+            this.produziBtn.Size = new System.Drawing.Size(232, 41);
+            this.produziBtn.TabIndex = 3;
+            this.produziBtn.Text = "Produži";
+            this.produziBtn.UseVisualStyleBackColor = true;
+            this.produziBtn.Click += new System.EventHandler(this.produziBtn_Click);
             // 
             // VracanjeKnjige
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(230, 270);
+            this.ClientSize = new System.Drawing.Size(232, 354);
+            this.Controls.Add(this.ponistiBtn);
+            this.Controls.Add(this.provjeraBtn);
+            this.Controls.Add(this.produziBtn);
             this.Controls.Add(this.vratiBtn);
-            this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.povratakPicker);
+            this.Controls.Add(this.posudbaPicker);
             this.Controls.Add(this.isbnTxt);
+            this.Controls.Add(this.clanskiTxt);
+            this.Controls.Add(this.idPosudbeTxt);
             this.Controls.Add(this.iznosTxt);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -161,13 +219,18 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox iznosTxt;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox clanskiTxt;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker posudbaPicker;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker povratakPicker;
         private System.Windows.Forms.Button vratiBtn;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox idPosudbeTxt;
+        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox isbnTxt;
+        private System.Windows.Forms.Button provjeraBtn;
+        private System.Windows.Forms.Button ponistiBtn;
+        private System.Windows.Forms.Button produziBtn;
     }
 }
