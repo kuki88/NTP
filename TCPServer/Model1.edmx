@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="KnjiznicaManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="korisnickoIme" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="lozinka" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Clanovi">
+          <Key>
+            <PropertyRef Name="clanskiBroj" />
+          </Key>
+          <Property Name="clanskiBroj" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ime" Type="varchar" MaxLength="50" />
+          <Property Name="prezime" Type="varchar" MaxLength="50" />
+          <Property Name="telefonskiBroj" Type="varchar" MaxLength="30" />
+          <Property Name="adresa" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Kategorije">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kategorija" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Knjige">
+          <Key>
+            <PropertyRef Name="ISBN" />
+          </Key>
+          <Property Name="NazivKnjige" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Kategorija" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Količina" Type="int" Nullable="false" />
+          <Property Name="ISBN" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Autor" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Posudbe">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="isbnKnjige" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="datumPosudbe" Type="datetime" />
+          <Property Name="datumPovratka" Type="datetime" />
+          <Property Name="clanskiBroj" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Posudbe_Clanovi">
+          <End Role="Clanovi" Type="Self.Clanovi" Multiplicity="1" />
+          <End Role="Posudbe" Type="Self.Posudbe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clanovi">
+              <PropertyRef Name="clanskiBroj" />
+            </Principal>
+            <Dependent Role="Posudbe">
+              <PropertyRef Name="clanskiBroj" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Posudbe_Knjige">
+          <End Role="Knjige" Type="Self.Knjige" Multiplicity="1" />
+          <End Role="Posudbe" Type="Self.Posudbe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Knjige">
+              <PropertyRef Name="ISBN" />
+            </Principal>
+            <Dependent Role="Posudbe">
+              <PropertyRef Name="isbnKnjige" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KnjiznicaManagementModelStoreContainer">
+          <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clanovi" EntityType="Self.Clanovi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kategorije" EntityType="Self.Kategorije" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Knjige" EntityType="Self.Knjige" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Posudbe" EntityType="Self.Posudbe" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Posudbe_Clanovi" Association="Self.FK_Posudbe_Clanovi">
+            <End Role="Clanovi" EntitySet="Clanovi" />
+            <End Role="Posudbe" EntitySet="Posudbe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Posudbe_Knjige" Association="Self.FK_Posudbe_Knjige">
+            <End Role="Knjige" EntitySet="Knjige" />
+            <End Role="Posudbe" EntitySet="Posudbe" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KnjiznicaManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="korisnickoIme" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="lozinka" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Clanovi">
+          <Key>
+            <PropertyRef Name="clanskiBroj" />
+          </Key>
+          <Property Name="clanskiBroj" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="prezime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="telefonskiBroj" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="adresa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Posudbe" Relationship="Self.FK_Posudbe_Clanovi" FromRole="Clanovi" ToRole="Posudbe" />
+        </EntityType>
+        <EntityType Name="Kategorije">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kategorija" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Knjige">
+          <Key>
+            <PropertyRef Name="ISBN" />
+          </Key>
+          <Property Name="NazivKnjige" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Kategorija" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Količina" Type="Int32" Nullable="false" />
+          <Property Name="ISBN" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Autor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Posudbe" Relationship="Self.FK_Posudbe_Knjige" FromRole="Knjige" ToRole="Posudbe" />
+        </EntityType>
+        <EntityType Name="Posudbe">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="isbnKnjige" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="datumPosudbe" Type="DateTime" Precision="3" />
+          <Property Name="datumPovratka" Type="DateTime" Precision="3" />
+          <Property Name="clanskiBroj" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Clanovi" Relationship="Self.FK_Posudbe_Clanovi" FromRole="Posudbe" ToRole="Clanovi" />
+          <NavigationProperty Name="Knjige" Relationship="Self.FK_Posudbe_Knjige" FromRole="Posudbe" ToRole="Knjige" />
+        </EntityType>
+        <Association Name="FK_Posudbe_Clanovi">
+          <End Role="Clanovi" Type="Self.Clanovi" Multiplicity="1" />
+          <End Role="Posudbe" Type="Self.Posudbe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clanovi">
+              <PropertyRef Name="clanskiBroj" />
+            </Principal>
+            <Dependent Role="Posudbe">
+              <PropertyRef Name="clanskiBroj" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Posudbe_Knjige">
+          <End Role="Knjige" Type="Self.Knjige" Multiplicity="1" />
+          <End Role="Posudbe" Type="Self.Posudbe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Knjige">
+              <PropertyRef Name="ISBN" />
+            </Principal>
+            <Dependent Role="Posudbe">
+              <PropertyRef Name="isbnKnjige" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KnjiznicaManagementEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="admin" EntityType="Self.admin" />
+          <EntitySet Name="Clanovi" EntityType="Self.Clanovi" />
+          <EntitySet Name="Kategorije" EntityType="Self.Kategorije" />
+          <EntitySet Name="Knjige" EntityType="Self.Knjige" />
+          <EntitySet Name="Posudbe" EntityType="Self.Posudbe" />
+          <AssociationSet Name="FK_Posudbe_Clanovi" Association="Self.FK_Posudbe_Clanovi">
+            <End Role="Clanovi" EntitySet="Clanovi" />
+            <End Role="Posudbe" EntitySet="Posudbe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Posudbe_Knjige" Association="Self.FK_Posudbe_Knjige">
+            <End Role="Knjige" EntitySet="Knjige" />
+            <End Role="Posudbe" EntitySet="Posudbe" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="KnjiznicaManagementModelStoreContainer" CdmEntityContainer="KnjiznicaManagementEntities">
+          <EntitySetMapping Name="admin">
+            <EntityTypeMapping TypeName="KnjiznicaManagementModel.admin">
+              <MappingFragment StoreEntitySet="admin">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="korisnickoIme" ColumnName="korisnickoIme" />
+                <ScalarProperty Name="lozinka" ColumnName="lozinka" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clanovi">
+            <EntityTypeMapping TypeName="KnjiznicaManagementModel.Clanovi">
+              <MappingFragment StoreEntitySet="Clanovi">
+                <ScalarProperty Name="clanskiBroj" ColumnName="clanskiBroj" />
+                <ScalarProperty Name="ime" ColumnName="ime" />
+                <ScalarProperty Name="prezime" ColumnName="prezime" />
+                <ScalarProperty Name="telefonskiBroj" ColumnName="telefonskiBroj" />
+                <ScalarProperty Name="adresa" ColumnName="adresa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kategorije">
+            <EntityTypeMapping TypeName="KnjiznicaManagementModel.Kategorije">
+              <MappingFragment StoreEntitySet="Kategorije">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Kategorija" ColumnName="Kategorija" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Knjige">
+            <EntityTypeMapping TypeName="KnjiznicaManagementModel.Knjige">
+              <MappingFragment StoreEntitySet="Knjige">
+                <ScalarProperty Name="NazivKnjige" ColumnName="NazivKnjige" />
+                <ScalarProperty Name="Kategorija" ColumnName="Kategorija" />
+                <ScalarProperty Name="Količina" ColumnName="Količina" />
+                <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+                <ScalarProperty Name="Autor" ColumnName="Autor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Posudbe">
+            <EntityTypeMapping TypeName="KnjiznicaManagementModel.Posudbe">
+              <MappingFragment StoreEntitySet="Posudbe">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="isbnKnjige" ColumnName="isbnKnjige" />
+                <ScalarProperty Name="datumPosudbe" ColumnName="datumPosudbe" />
+                <ScalarProperty Name="datumPovratka" ColumnName="datumPovratka" />
+                <ScalarProperty Name="clanskiBroj" ColumnName="clanskiBroj" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

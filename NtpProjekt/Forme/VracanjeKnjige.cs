@@ -85,7 +85,7 @@ namespace NtpProjekt
         }
         private void vratiBtn_Click(object sender, EventArgs e)
         {
-            var potvrda = MessageBox.Show("Je li posudba vraćena?", "Posudba", MessageBoxButtons.YesNoCancel);
+            var potvrda = MessageBox.Show("Želite li vratiti knjigu?", "Posudba", MessageBoxButtons.YesNoCancel);
             if(potvrda == DialogResult.Yes)
             {
                 entity.Posudbe.Remove(posudba);
