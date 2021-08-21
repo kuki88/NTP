@@ -137,7 +137,6 @@
             this.idPosudbeTxt.Name = "idPosudbeTxt";
             this.idPosudbeTxt.Size = new System.Drawing.Size(100, 20);
             this.idPosudbeTxt.TabIndex = 1;
-            this.idPosudbeTxt.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label6
             // 

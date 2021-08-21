@@ -198,7 +198,7 @@ namespace NtpProjekt
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Poruka", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Neuspješno spajanje na poslužitelja! " + "(" + ex.Message + ")", "Neuspješno spajanje", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

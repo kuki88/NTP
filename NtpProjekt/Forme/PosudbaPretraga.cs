@@ -3,10 +3,17 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
+using FastReport;
+using FastReport.Export.Image;
+using FastReport.Utils;
+using FastReport.Data;
+using System.Data.SqlClient;
 
 namespace NtpProjekt
 {
@@ -56,7 +63,7 @@ namespace NtpProjekt
             kolicinaTxt.Enabled = true;
             bkategorijaCombo.Enabled = true;
         }
-        private void ocistiKnjigu()
+        private void ocistiKnjiguForm()
         {
             dClanskiTxt.Text = null;
             isbnTxt.Text = null;
@@ -71,9 +78,10 @@ namespace NtpProjekt
         bool prviUvjet = false;
         bool drugiUvjet = false;
 
-        Posudbe posudba = new Posudbe();
+        Posudbe posudba;
         KnjiznicaEntities obj = new KnjiznicaEntities();
         Clanovi trazeniClan;
+        //XmlSerializer xmlSer;
 
         //Inicijalizacija
 
@@ -82,11 +90,10 @@ namespace NtpProjekt
             InitializeComponent();
             kkategorijaCombo.DataSource = obj.Kategorije.ToList();
             kkategorijaCombo.DisplayMember = "Kategorija";
+            posudbeReportBtn.Enabled = false;
             posudbaBtn.Enabled = false;
             zakljucajKnjigu();
-
         }
-
 
 
         //
@@ -122,6 +129,10 @@ namespace NtpProjekt
             knjigeGrid.DataSource = knjige;
         }
 
+        public void PokreniReportPosudba(Posudbe posudba, Clanovi clan, Knjige knjiga)
+        {
+            Report rpt = new Report();
+        }
         private void posudbaBtn_Click(object sender, EventArgs e)
         {
             var objKnjiga = obj.Knjige.Where(x => x.ISBN == isbnTxt.Text).FirstOrDefault();
@@ -132,6 +143,7 @@ namespace NtpProjekt
                 {
                     try
                     {
+                        posudba = new Posudbe();
                         posudba.clanskiBroj = objClan.clanskiBroj;
                         posudba.isbnKnjige = objKnjiga.ISBN;
                         posudba.datumPosudbe = DateTime.Now;
@@ -143,11 +155,11 @@ namespace NtpProjekt
 
                         MessageBox.Show("Korisnik " + objClan.ime + " " + objClan.prezime + " je posudio njigu ISBN: " + objKnjiga.ISBN);
                         otkljucajOcistiClana();
-                        ocistiKnjigu();
+                        ocistiKnjiguForm();
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("Greška kod posudbe!");
+                        MessageBox.Show("Greška kod posudbe!", ex.Message);
                     }
                 }
             }
@@ -176,6 +188,7 @@ namespace NtpProjekt
                 cTelTxt.Text = trazeniClan.telefonskiBroj;
                 zakljucajClana();
                 drugiUvjet = true;
+                posudbeReportBtn.Enabled = true;
             }
             else
             {
@@ -208,6 +221,40 @@ namespace NtpProjekt
             otkljucajOcistiClana();
             drugiUvjet = false;
             posudbaBtn.Enabled = false;
+        }
+
+        private void posudbeReportBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //FileStream fs = new FileStream(Application.StartupPath.Remove(Application.StartupPath.Length - 10) + "\\Posudba.xml", FileMode.Create, FileAccess.Write);
+                //xmlSer.Serialize(fs, posudba);
+
+                //fs.Close();
+
+                //DataSet data = new DataSet();
+                //data.ReadXml($"{Application.StartupPath}/nwind.xml"); //Load XML to it
+                MsSqlDataConnection conn = new MsSqlDataConnection();
+                conn.ConnectionString = "metadata=res://*/Model1.csdl|res://*/Model1.ssdl|res://*/Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=KUKICRO\\SQLEXPRESS;initial catalog=KnjiznicaManagement;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;' providerName = 'System.Data.EntityClient";
+                //conn.CreateAllTables();
+                Report report = new Report();
+                report.Load($"{Application.StartupPath.Remove(Application.StartupPath.Length - 10)}\\PosudbaReport.frx");
+                report.SetParameterValue("posudbaID", trazeniClan.clanskiBroj);
+                report.Prepare(); //Prepare a report
+                report.Dictionary.Connections.Add(conn);
+                //System.Diagnostics.Process.Start(@"c:\myPdf.pdf");
+
+                using (var export = new FastReport.Export.PdfSimple.PDFSimpleExport())
+                {
+                    export.Export(report, "Izvjestaj.pdf");
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Pogreška kod pokazivanja izvještaja. ", ex.Message);
+            }
+
+
         }
     }
 }

@@ -25,9 +25,9 @@ namespace NtpProjekt
 
         private void DodajBtn_Click(object sender, EventArgs e)
         {
-            if (uDvoClanskiTxt.Text.Length == 2 && dClanskiTxt.Text.Length == 6)
+            if (dvoClanskiTxt.Text.Length == 2 && dClanskiTxt.Text.Length == 6)
             {
-                string clanskiBr = uDvoClanskiTxt.Text + "/" + dClanskiTxt.Text;
+                string clanskiBr = dvoClanskiTxt.Text + "/" + dClanskiTxt.Text;
                 var ime = dImeTxt.Text;
                 var prezime = dPrezimeTxt.Text;
                 var telefon = dTelTxt.Text;
@@ -43,6 +43,12 @@ namespace NtpProjekt
                     clan.adresa = adresa;
                     obj.Clanovi.Add(clan);
                     obj.SaveChanges();
+                    dImeTxt.Text = string.Empty;
+                    dPrezimeTxt.Text = string.Empty;
+                    dTelTxt.Text = string.Empty;
+                    dAdresaTxt.Text = string.Empty;
+                    dvoClanskiTxt.Text = string.Empty;
+                    dClanskiTxt.Text = string.Empty;
                 }
                 else
                 {

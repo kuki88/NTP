@@ -51,7 +51,7 @@
             // posudbaBtn
             // 
             this.posudbaBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.posudbaBtn.Location = new System.Drawing.Point(683, 259);
+            this.posudbaBtn.Location = new System.Drawing.Point(688, 225);
             this.posudbaBtn.Name = "posudbaBtn";
             this.posudbaBtn.Size = new System.Drawing.Size(133, 63);
             this.posudbaBtn.TabIndex = 0;
@@ -62,7 +62,7 @@
             // vracanjeBtn
             // 
             this.vracanjeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.vracanjeBtn.Location = new System.Drawing.Point(544, 259);
+            this.vracanjeBtn.Location = new System.Drawing.Point(549, 225);
             this.vracanjeBtn.Name = "vracanjeBtn";
             this.vracanjeBtn.Size = new System.Drawing.Size(133, 63);
             this.vracanjeBtn.TabIndex = 0;
@@ -73,7 +73,7 @@
             // dodajUkloniBtn
             // 
             this.dodajUkloniBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dodajUkloniBtn.Location = new System.Drawing.Point(544, 27);
+            this.dodajUkloniBtn.Location = new System.Drawing.Point(549, 27);
             this.dodajUkloniBtn.Name = "dodajUkloniBtn";
             this.dodajUkloniBtn.Size = new System.Drawing.Size(133, 63);
             this.dodajUkloniBtn.TabIndex = 0;
@@ -84,7 +84,7 @@
             // clanBtn
             // 
             this.clanBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.clanBtn.Location = new System.Drawing.Point(683, 27);
+            this.clanBtn.Location = new System.Drawing.Point(688, 27);
             this.clanBtn.Name = "clanBtn";
             this.clanBtn.Size = new System.Drawing.Size(133, 63);
             this.clanBtn.TabIndex = 0;
@@ -98,7 +98,7 @@
             this.editToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(828, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(833, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -163,6 +163,7 @@
             // 
             // serverIpTxt
             // 
+            this.serverIpTxt.Enabled = false;
             this.serverIpTxt.Location = new System.Drawing.Point(69, 55);
             this.serverIpTxt.Name = "serverIpTxt";
             this.serverIpTxt.Size = new System.Drawing.Size(349, 20);
@@ -210,7 +211,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(828, 334);
+            this.ClientSize = new System.Drawing.Size(833, 300);
             this.Controls.Add(this.infoTxt);
             this.Controls.Add(this.posaljiBtn);
             this.Controls.Add(this.spojiBtn);

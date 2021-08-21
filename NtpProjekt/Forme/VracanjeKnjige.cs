@@ -24,12 +24,6 @@ namespace NtpProjekt
         }
 
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
         private void provjeraBtn_Click(object sender, EventArgs e)
         {
             posudba = entity.Posudbe.Where(x => x.Id.ToString() == idPosudbeTxt.Text).FirstOrDefault();
@@ -54,6 +48,22 @@ namespace NtpProjekt
                     double iznos = dani * 0.50;
                     iznosTxt.Text = iznos.ToString();
                 }
+            }
+            else
+            {
+                idPosudbeTxt.Text = null;
+                isbnTxt.Text = null;
+                clanskiTxt.Text = null;
+                iznosTxt.Text = null;
+                posudbaPicker.Value = DateTime.Now;
+                povratakPicker.Value = DateTime.Now;
+
+                isbnTxt.Enabled = true;
+                clanskiTxt.Enabled = true;
+                povratakPicker.Enabled = true;
+                posudbaPicker.Enabled = true;
+                vratiBtn.Enabled = false;
+                produziBtn.Enabled = false;
             }
         }
 
@@ -88,10 +98,9 @@ namespace NtpProjekt
             var potvrda = MessageBox.Show("Želite li vratiti knjigu?", "Posudba", MessageBoxButtons.YesNoCancel);
             if(potvrda == DialogResult.Yes)
             {
-                entity.Posudbe.Remove(posudba);
                 entity.Knjige.Where(x => x.ISBN == posudba.isbnKnjige).FirstOrDefault().Količina += 1;
+                entity.Posudbe.Remove(posudba);
                 entity.SaveChanges();
-                
             }
         }
 
