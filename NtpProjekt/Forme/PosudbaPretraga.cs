@@ -14,6 +14,7 @@ using FastReport.Export.Image;
 using FastReport.Utils;
 using FastReport.Data;
 using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 
 namespace NtpProjekt
 {
@@ -83,6 +84,10 @@ namespace NtpProjekt
         Clanovi trazeniClan;
         //XmlSerializer xmlSer;
 
+
+
+
+
         //Inicijalizacija
 
         public PosudbaForm()
@@ -93,6 +98,7 @@ namespace NtpProjekt
             posudbeReportBtn.Enabled = false;
             posudbaBtn.Enabled = false;
             zakljucajKnjigu();
+            FastReport.Utils.RegisteredObjects.AddConnection(typeof(MySqlDataConnection));
         }
 
 
@@ -234,14 +240,15 @@ namespace NtpProjekt
 
                 //DataSet data = new DataSet();
                 //data.ReadXml($"{Application.StartupPath}/nwind.xml"); //Load XML to it
-                MsSqlDataConnection conn = new MsSqlDataConnection();
+                MySqlDataConnection conn = new MySqlDataConnection();
                 conn.ConnectionString = "metadata=res://*/Model1.csdl|res://*/Model1.ssdl|res://*/Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=KUKICRO\\SQLEXPRESS;initial catalog=KnjiznicaManagement;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;' providerName = 'System.Data.EntityClient";
-                //conn.CreateAllTables();
+                conn.CreateAllTables();
+                FastReport.Report rpt = new FastReport.Report();
                 Report report = new Report();
+                report.Dictionary.Connections.Add(conn);
                 report.Load($"{Application.StartupPath.Remove(Application.StartupPath.Length - 10)}\\PosudbaReport.frx");
                 report.SetParameterValue("posudbaID", trazeniClan.clanskiBroj);
                 report.Prepare(); //Prepare a report
-                report.Dictionary.Connections.Add(conn);
                 //System.Diagnostics.Process.Start(@"c:\myPdf.pdf");
 
                 using (var export = new FastReport.Export.PdfSimple.PDFSimpleExport())
@@ -253,8 +260,6 @@ namespace NtpProjekt
             {
                 MessageBox.Show("Pogreška kod pokazivanja izvještaja. ", ex.Message);
             }
-
-
         }
     }
 }
