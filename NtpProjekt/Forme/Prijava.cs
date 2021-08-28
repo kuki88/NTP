@@ -12,6 +12,9 @@ namespace NtpProjekt
 {
     public partial class PrijavaForm : Form
     {
+
+        EnkripcijaSHA es = new EnkripcijaSHA();
+
         public PrijavaForm()
         {
             InitializeComponent();
@@ -22,15 +25,17 @@ namespace NtpProjekt
             KnjiznicaEntities obj = new KnjiznicaEntities();
             if (korisnickoTxt.Text != string.Empty && lozinkaTxt.Text != string.Empty)
             {
+                
                 var user = obj.admin.Where(x => x.korisnickoIme.Equals(korisnickoTxt.Text)).FirstOrDefault();
 
                 if (user != null)
                 {
-                    if (user.lozinka.Equals(lozinkaTxt.Text))
+                    if (user.lozinka.Equals(es.Enkriptiraj(lozinkaTxt.Text)))
                     {
-                        MainMenu main = new MainMenu();
+                        MainMenu main = new MainMenu(user);
                         this.Hide();
                         main.ShowDialog();
+
                         this.Close();
                     }
                     else MessageBox.Show("Neuspješna prijava! (Pogrešna lozinka)");

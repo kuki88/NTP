@@ -45,13 +45,15 @@
             this.porukaTxt = new System.Windows.Forms.TextBox();
             this.posaljiBtn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.adminLbl = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // posudbaBtn
             // 
             this.posudbaBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.posudbaBtn.Location = new System.Drawing.Point(688, 225);
+            this.posudbaBtn.Location = new System.Drawing.Point(688, 216);
             this.posudbaBtn.Name = "posudbaBtn";
             this.posudbaBtn.Size = new System.Drawing.Size(133, 63);
             this.posudbaBtn.TabIndex = 0;
@@ -62,7 +64,7 @@
             // vracanjeBtn
             // 
             this.vracanjeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.vracanjeBtn.Location = new System.Drawing.Point(549, 225);
+            this.vracanjeBtn.Location = new System.Drawing.Point(549, 216);
             this.vracanjeBtn.Name = "vracanjeBtn";
             this.vracanjeBtn.Size = new System.Drawing.Size(133, 63);
             this.vracanjeBtn.TabIndex = 0;
@@ -207,11 +209,32 @@
             this.label2.TabIndex = 19;
             this.label2.Text = "Članski broj:";
             // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(587, 287);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(92, 13);
+            this.label3.TabIndex = 27;
+            this.label3.Text = "Prijavljeni ste kao:";
+            // 
+            // adminLbl
+            // 
+            this.adminLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.adminLbl.AutoSize = true;
+            this.adminLbl.Location = new System.Drawing.Point(685, 287);
+            this.adminLbl.Name = "adminLbl";
+            this.adminLbl.Size = new System.Drawing.Size(0, 13);
+            this.adminLbl.TabIndex = 28;
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(833, 300);
+            this.ClientSize = new System.Drawing.Size(833, 309);
+            this.Controls.Add(this.adminLbl);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.infoTxt);
             this.Controls.Add(this.posaljiBtn);
             this.Controls.Add(this.spojiBtn);
@@ -256,6 +279,8 @@
         private System.Windows.Forms.TextBox porukaTxt;
         private System.Windows.Forms.Button posaljiBtn;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label adminLbl;
     }
 }
 

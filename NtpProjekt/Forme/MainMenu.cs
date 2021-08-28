@@ -17,11 +17,26 @@ namespace NtpProjekt
     {
 
         SimpleTcpClient client;
-
+        admin user;
 
         public MainMenu()
         {
             InitializeComponent();
+
+            clanBtn.Enabled = false;
+            dodajUkloniBtn.Enabled = false;
+            posaljiBtn.Enabled = false;
+            posudbaBtn.Enabled = false;
+            spojiBtn.Enabled = false;
+            vracanjeBtn.Enabled = false;
+        }
+
+        public MainMenu(admin _user)
+        {
+            InitializeComponent();
+            user = _user;
+
+            adminLbl.Text = user.korisnickoIme;
         }
 
         private void dodajUkloniBtn_Click(object sender, EventArgs e)

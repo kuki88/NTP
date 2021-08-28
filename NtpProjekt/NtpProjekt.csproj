@@ -153,6 +153,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="EnkripcijaSHA.cs" />
+    <Compile Include="Forme\Registracija.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Registracija.Designer.cs">
+      <DependentUpon>Registracija.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forme\KnjigeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -238,6 +245,9 @@
     <Compile Include="Forme\Clanovi.Designer.cs">
       <DependentUpon>Clanovi.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forme\Registracija.resx">
+      <DependentUpon>Registracija.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forme\KnjigeForm.resx">
       <DependentUpon>KnjigeForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -304,6 +314,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="PosudbaReport.frx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
