@@ -63,6 +63,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.dKolicinaNumeric);
             this.groupBox1.Controls.Add(this.dKategorijaCombo);
             this.groupBox1.Controls.Add(this.DodajBtn);
@@ -103,7 +106,6 @@
             // 
             // DodajBtn
             // 
-            this.DodajBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.DodajBtn.Location = new System.Drawing.Point(3, 215);
             this.DodajBtn.Name = "DodajBtn";
             this.DodajBtn.Size = new System.Drawing.Size(326, 38);
@@ -180,6 +182,9 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.uKolicinaNumeric);
             this.groupBox2.Controls.Add(this.traziBtn);
             this.groupBox2.Controls.Add(this.UrediBtn);
@@ -225,7 +230,6 @@
             // 
             // UrediBtn
             // 
-            this.UrediBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.UrediBtn.Location = new System.Drawing.Point(3, 242);
             this.UrediBtn.Name = "UrediBtn";
             this.UrediBtn.Size = new System.Drawing.Size(326, 38);

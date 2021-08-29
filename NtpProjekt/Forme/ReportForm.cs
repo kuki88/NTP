@@ -17,5 +17,16 @@ namespace NtpProjekt.Forme
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            RestClient klijent = new RestClient();
+            klijent.krajnjaTocka = txtLink.Text;
+
+            string odgovor = string.Empty;
+
+            odgovor = klijent.napraviZahtjev();
+            txtOdgovor.Text = odgovor;
+        }
     }
 }

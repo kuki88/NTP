@@ -245,6 +245,7 @@
     <Compile Include="Forme\Clanovi.Designer.cs">
       <DependentUpon>Clanovi.cs</DependentUpon>
     </Compile>
+    <Compile Include="RestClient.cs" />
     <EmbeddedResource Include="Forme\Registracija.resx">
       <DependentUpon>Registracija.cs</DependentUpon>
     </EmbeddedResource>

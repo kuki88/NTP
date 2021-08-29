@@ -53,7 +53,7 @@
             // posudbaBtn
             // 
             this.posudbaBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.posudbaBtn.Location = new System.Drawing.Point(688, 216);
+            this.posudbaBtn.Location = new System.Drawing.Point(688, 221);
             this.posudbaBtn.Name = "posudbaBtn";
             this.posudbaBtn.Size = new System.Drawing.Size(133, 63);
             this.posudbaBtn.TabIndex = 0;
@@ -64,7 +64,7 @@
             // vracanjeBtn
             // 
             this.vracanjeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.vracanjeBtn.Location = new System.Drawing.Point(549, 216);
+            this.vracanjeBtn.Location = new System.Drawing.Point(549, 221);
             this.vracanjeBtn.Name = "vracanjeBtn";
             this.vracanjeBtn.Size = new System.Drawing.Size(133, 63);
             this.vracanjeBtn.TabIndex = 0;
@@ -213,7 +213,7 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(587, 287);
+            this.label3.Location = new System.Drawing.Point(590, 287);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(92, 13);
             this.label3.TabIndex = 27;
@@ -223,7 +223,7 @@
             // 
             this.adminLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.adminLbl.AutoSize = true;
-            this.adminLbl.Location = new System.Drawing.Point(685, 287);
+            this.adminLbl.Location = new System.Drawing.Point(688, 287);
             this.adminLbl.Name = "adminLbl";
             this.adminLbl.Size = new System.Drawing.Size(0, 13);
             this.adminLbl.TabIndex = 28;
