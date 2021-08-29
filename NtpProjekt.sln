@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NtpProjekt", "NtpProjekt\Nt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCPServer", "TCPServer\TCPServer.csproj", "{D638A21A-20C3-4B30-897A-5D49DD2BCADE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DinamickiLibrary", "DinamickiLibrary\DinamickiLibrary.csproj", "{7AA7166A-5110-45BE-8B3B-F59709F4032F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RESTWebAPI", "RESTWebAPI\RESTWebAPI.csproj", "{E85C962D-EFB5-4B0E-84D4-3FCA9D4CF0BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{D638A21A-20C3-4B30-897A-5D49DD2BCADE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D638A21A-20C3-4B30-897A-5D49DD2BCADE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D638A21A-20C3-4B30-897A-5D49DD2BCADE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AA7166A-5110-45BE-8B3B-F59709F4032F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AA7166A-5110-45BE-8B3B-F59709F4032F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AA7166A-5110-45BE-8B3B-F59709F4032F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AA7166A-5110-45BE-8B3B-F59709F4032F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E85C962D-EFB5-4B0E-84D4-3FCA9D4CF0BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E85C962D-EFB5-4B0E-84D4-3FCA9D4CF0BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E85C962D-EFB5-4B0E-84D4-3FCA9D4CF0BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E85C962D-EFB5-4B0E-84D4-3FCA9D4CF0BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

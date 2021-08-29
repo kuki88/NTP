@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,23 +9,15 @@ using System.Threading.Tasks;
 
 namespace NtpProjekt
 {
-    public enum httpRijec
-    {
-        GET,
-        POST,
-        PUT,
-        DELETE
-    }
-
     class RestClient
     {
         public string krajnjaTocka { get; set; }
-        public httpRijec httpMetoda { get; set; }
+        public string httpMetoda { get; set; }
 
         public RestClient()
         {
-            krajnjaTocka = string.Empty;
-            httpMetoda = httpRijec.GET;
+            krajnjaTocka = "https://official-joke-api.appspot.com/random_joke";
+            httpMetoda = "GET";
         }
 
         public string napraviZahtjev()
@@ -49,7 +42,8 @@ namespace NtpProjekt
                         {
                             using (StreamReader citacStream = new StreamReader(odgovorStream))
                             {
-                                strOdgovor = citacStream.ReadToEnd();
+                                JObject json = JObject.Parse(citacStream.ReadToEnd().ToString()); 
+                                strOdgovor = $"{json["setup"]}\n{json["punchline"]}";
                             }
                         }
                     }
@@ -59,9 +53,7 @@ namespace NtpProjekt
             {
                 throw;
             }
-
             return strOdgovor;
         }
-
     }
 }

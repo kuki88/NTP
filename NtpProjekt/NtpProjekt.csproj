@@ -41,20 +41,27 @@
     <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
       <HintPath>..\packages\BouncyCastle.1.8.6.1\lib\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
+    <Reference Include="DinamickiLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DinamickiLibrary\bin\Debug\DinamickiLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="FastReport, Version=2021.3.28.0, Culture=neutral, PublicKeyToken=5ceb240df42bf6e8, processorArchitecture=MSIL">
-      <HintPath>..\packages\FastReport.OpenSource.2021.3.28\lib\net40\FastReport.dll</HintPath>
+    <Reference Include="FastReport, Version=2021.3.28.0, Culture=neutral, PublicKeyToken=db7e5ce63278458c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>FastReportDLL\FastReport.dll</HintPath>
     </Reference>
-    <Reference Include="FastReport.Compat, Version=2021.3.0.0, Culture=neutral, PublicKeyToken=406e1f4c3c8ef97e, processorArchitecture=MSIL">
-      <HintPath>..\packages\FastReport.Compat.2021.3.0\lib\net40\FastReport.Compat.dll</HintPath>
+    <Reference Include="FastReport.Bars, Version=2021.3.28.0, Culture=neutral, PublicKeyToken=db7e5ce63278458c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>FastReportDLL\FastReport.Bars.dll</HintPath>
     </Reference>
-    <Reference Include="FastReport.Data.MsSql, Version=2021.3.0.0, Culture=neutral, PublicKeyToken=b33a9a06fcc00c4c, processorArchitecture=MSIL">
-      <HintPath>..\packages\FastReport.OpenSource.Data.MsSql.2021.3.0\lib\net452\FastReport.Data.MsSql.dll</HintPath>
+    <Reference Include="FastReport.Editor, Version=2021.3.28.0, Culture=neutral, PublicKeyToken=db7e5ce63278458c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>FastReportDLL\FastReport.Editor.dll</HintPath>
     </Reference>
     <Reference Include="FastReport.OpenSource.Export.PdfSimple, Version=2021.3.15.0, Culture=neutral, PublicKeyToken=b33a9a06fcc00c4c, processorArchitecture=MSIL">
       <HintPath>..\packages\FastReport.OpenSource.Export.PdfSimple.2021.3.15\lib\net40\FastReport.OpenSource.Export.PdfSimple.dll</HintPath>
@@ -114,6 +121,9 @@
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
     </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Numerics" />
     <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
@@ -148,12 +158,12 @@
     <Compile Include="Clanovi.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Class1.cs" />
     <Compile Include="DataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
-    <Compile Include="EnkripcijaSHA.cs" />
     <Compile Include="Forme\Registracija.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,11 +194,11 @@
     <Compile Include="Forme\PosudbaPretraga.Designer.cs">
       <DependentUpon>PosudbaPretraga.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forme\ReportForm.cs">
+    <Compile Include="Forme\RESTForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forme\ReportForm.Designer.cs">
-      <DependentUpon>ReportForm.cs</DependentUpon>
+    <Compile Include="Forme\RESTForm.Designer.cs">
+      <DependentUpon>RESTForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forme\UrediClanForm.cs">
       <SubType>Form</SubType>
@@ -246,6 +256,9 @@
       <DependentUpon>Clanovi.cs</DependentUpon>
     </Compile>
     <Compile Include="RestClient.cs" />
+    <Compile Include="Services\DatabaseService.cs" />
+    <Compile Include="Services\FastReportService.cs" />
+    <Compile Include="Services\HttpService.cs" />
     <EmbeddedResource Include="Forme\Registracija.resx">
       <DependentUpon>Registracija.cs</DependentUpon>
     </EmbeddedResource>
@@ -261,8 +274,8 @@
     <EmbeddedResource Include="Forme\Prijava.resx">
       <DependentUpon>Prijava.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forme\ReportForm.resx">
-      <DependentUpon>ReportForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forme\RESTForm.resx">
+      <DependentUpon>RESTForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\UrediClanForm.resx">
       <DependentUpon>UrediClanForm.cs</DependentUpon>
@@ -315,7 +328,6 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
-    <None Include="PosudbaReport.frx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -325,6 +337,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="SveKnjigeReport.frx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

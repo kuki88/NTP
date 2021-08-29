@@ -15,7 +15,8 @@ using FastReport.Utils;
 using FastReport.Data;
 using System.Data.SqlClient;
 using MySql.Data.MySqlClient;
-
+using NtpProjekt.Services;
+using FastReport.Export.Pdf;
 namespace NtpProjekt
 {
     public partial class PosudbaForm : Form
@@ -229,37 +230,14 @@ namespace NtpProjekt
             posudbaBtn.Enabled = false;
         }
 
-        private void posudbeReportBtn_Click(object sender, EventArgs e)
+        private void btnShowSveKnjigeReport_Click(object sender, EventArgs e)
         {
-            try
-            {
-                //FileStream fs = new FileStream(Application.StartupPath.Remove(Application.StartupPath.Length - 10) + "\\Posudba.xml", FileMode.Create, FileAccess.Write);
-                //xmlSer.Serialize(fs, posudba);
+            ReportService.SveKnjigeReport(DatabaseService.SveKnjige());
+        }
 
-                //fs.Close();
-
-                //DataSet data = new DataSet();
-                //data.ReadXml($"{Application.StartupPath}/nwind.xml"); //Load XML to it
-                //MySqlDataConnection conn = new MySqlDataConnection();
-                //conn.ConnectionString = "metadata=res://*/Model1.csdl|res://*/Model1.ssdl|res://*/Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=KUKICRO\\SQLEXPRESS;initial catalog=KnjiznicaManagement;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;' providerName = 'System.Data.EntityClient";
-                //conn.CreateAllTables();
-                //FastReport.Report rpt = new FastReport.Report();
-                //Report report = new Report();
-                //report.Dictionary.Connections.Add(conn);
-                //report.Load($"{Application.StartupPath.Remove(Application.StartupPath.Length - 10)}\\PosudbaReport.frx");
-                //report.SetParameterValue("posudbaID", trazeniClan.clanskiBroj);
-                //report.Prepare(); //Prepare a report
-                //System.Diagnostics.Process.Start(@"c:\myPdf.pdf");
-
-                using (var export = new FastReport.Export.PdfSimple.PDFSimpleExport())
-                {
-                    //export.Export(report, "Izvjestaj.pdf");
-                }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Pogreška kod pokazivanja izvještaja. ", ex.Message);
-            }
+        private void btnPdf_Click(object sender, EventArgs e)
+        {
+            ReportService.ReportToPDF(DatabaseService.SveKnjige());
         }
     }
 }

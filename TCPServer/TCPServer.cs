@@ -5,9 +5,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DinamickiLibrary;
 
 namespace TCPServer
 {
@@ -16,14 +18,13 @@ namespace TCPServer
     public partial class TCPServerForm : Form
     {
         KnjiznicaManagementEntities entity = new KnjiznicaManagementEntities();
+        SimpleTcpServer server;
+        EnkripcijaRSA enRsa = new EnkripcijaRSA();
 
         public TCPServerForm()
         {
             InitializeComponent();
         }
-
-        SimpleTcpServer server;
-
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -39,6 +40,12 @@ namespace TCPServer
         {
             this.Invoke((MethodInvoker)delegate
             {
+                enRsa.enkriptiraniPodatak = e.Data;
+                using (RSACryptoServiceProvider RSA = new RSACryptoServiceProvider())
+                {
+                    enRsa.RSADekripcija(RSA.ExportParameters(true), false);
+                }
+                MessageBox.Show(enRsa.dekriptiraniPodatak);
                 string str = Encoding.UTF8.GetString(e.Data);
                 List<Posudbe> lista = entity.Posudbe.Where(x => x.clanskiBroj == str).ToList();
                 double racun = 0;

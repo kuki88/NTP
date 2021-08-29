@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="08/29/2021 18:05:15" ReportInfo.Modified="08/29/2021 21:18:51" ReportInfo.CreatorVersion="2021.3.28.0">
+  <Dictionary>
+    <BusinessObjectDataSource Name="Podaci" ReferenceName="Podaci" DataType="null" Enabled="true">
+      <Column Name="NazivKnjige" DataType="System.String"/>
+      <Column Name="Kategorija" DataType="System.String"/>
+      <Column Name="Količina" DataType="System.Int32"/>
+      <Column Name="ISBN" DataType="System.String"/>
+      <Column Name="Autor" DataType="System.String"/>
+    </BusinessObjectDataSource>
+  </Dictionary>
+  <ReportPage Name="Page1" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="47.25">
+      <TextObject Name="Text1" Left="283.5" Top="9.45" Width="113.4" Height="18.9" Text="Sve knjige" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="51.25" Width="718.2" Height="18.9">
+      <TextObject Name="Text5" Left="538.65" Width="179.55" Height="18.9" Text="Autor Knjige:&#13;&#10;" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text4" Left="359.1" Width="179.55" Height="18.9" Text="Kategorija Knjige:&#13;&#10;" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text2" Width="179.55" Height="18.9" Text="ISBN Knjige:&#13;&#10;" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text3" Left="179.55" Width="179.55" Height="18.9" Text="Naziv Knjige:&#13;&#10;" Font="Arial, 10pt, style=Bold"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="74.15" Width="718.2" Height="75.6" DataSource="Podaci">
+      <TableObject Name="Table1" Width="718.2" Height="75.6" Dock="Fill">
+        <TableColumn Name="Column1" Width="179.55"/>
+        <TableColumn Name="Column2" Width="179.55"/>
+        <TableColumn Name="Column3" Width="179.55"/>
+        <TableColumn Name="Column4" Width="179.55"/>
+        <TableRow Name="Row1">
+          <TableCell Name="Cell1" Text="[Podaci.ISBN]" Font="Arial, 10pt"/>
+          <TableCell Name="Cell2" Text="[Podaci.NazivKnjige]&#13;&#10;" Font="Arial, 10pt"/>
+          <TableCell Name="Cell3" Text="[Podaci.Kategorija]" Font="Arial, 10pt"/>
+          <TableCell Name="Cell4" Text="[Podaci.Autor]" Font="Arial, 10pt"/>
+        </TableRow>
+      </TableObject>
+    </DataBand>
+  </ReportPage>
+</Report>

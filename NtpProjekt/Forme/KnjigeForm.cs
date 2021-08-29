@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using NtpProjekt.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,16 +30,19 @@ namespace NtpProjekt.Forme
             Knjige knjiga = new Knjige();
             if (obj.Knjige.Where(x => x.ISBN == dIsbnTxt.Text).FirstOrDefault() == null)
             {
-                knjiga.ISBN = dIsbnTxt.Text;
-                knjiga.Kategorija = dKategorijaCombo.Text;
-                if (dKolicinaNumeric.Value > 0)
+                if (dIsbnTxt.Text != string.Empty && dKategorijaCombo.Text != string.Empty && dKolicinaNumeric.Text != string.Empty && dNazivTxt.Text != string.Empty && dAutorTxt.Text != string.Empty)
                 {
-                    knjiga.Količina = Convert.ToInt32(dKolicinaNumeric.Value.ToString());
+                    knjiga.ISBN = dIsbnTxt.Text;
+                    knjiga.Kategorija = dKategorijaCombo.Text;
+                    if (dKolicinaNumeric.Value > 0)
+                    {
+                        knjiga.Količina = Convert.ToInt32(dKolicinaNumeric.Value.ToString());
+                    }
+                    knjiga.NazivKnjige = dNazivTxt.Text;
+                    knjiga.Autor = dAutorTxt.Text;
+                    
+                    HttpService.DodajKnjigu(JsonConvert.SerializeObject(knjiga));
                 }
-                knjiga.NazivKnjige = dNazivTxt.Text;
-                knjiga.Autor = dAutorTxt.Text;
-                obj.Knjige.Add(knjiga);
-                obj.SaveChanges();
             }
             else MessageBox.Show("Već postoji knjiga s unešenim ISBN-om!");
         }

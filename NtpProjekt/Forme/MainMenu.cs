@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -219,11 +220,19 @@ namespace NtpProjekt
 
         private void posaljiBtn_Click(object sender, EventArgs e)
         {
+            DinamickiLibrary.EnkripcijaRSA rsa = new DinamickiLibrary.EnkripcijaRSA(); 
             if (client.IsConnected)
             {
                 if (!string.IsNullOrEmpty(porukaTxt.Text))
                 {
-                    client.Send(porukaTxt.Text);
+                    rsa.podatakZaKriptiranje = porukaTxt.Text;
+
+                    using (RSACryptoServiceProvider RSA = new RSACryptoServiceProvider())
+                    {
+                        rsa.RSAEnkripcija(RSA.ExportParameters(false), false);
+                    }
+
+                    client.Send(rsa.enkriptiraniPodatak);
                     porukaTxt.Text += $"Me: {porukaTxt.Text}{Environment.NewLine}";
                     porukaTxt.Text = string.Empty;
                 }

@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnShowSveKnjigeReport = new System.Windows.Forms.Button();
             this.pretragaBtn = new System.Windows.Forms.Button();
             this.kkategorijaCombo = new System.Windows.Forms.ComboBox();
             this.knazivTxt = new System.Windows.Forms.TextBox();
@@ -43,6 +44,7 @@
             this.Količina = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.knjigeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.posudbeReportBtn = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dvoClanskiTxt = new System.Windows.Forms.TextBox();
@@ -71,7 +73,7 @@
             this.knjiznicaManagementDataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.knjiznicaManagementDataSet = new NtpProjekt.KnjiznicaManagementDataSet();
             this.knjiznicaManagementDataSetBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.posudbeReportBtn = new System.Windows.Forms.Button();
+            this.btnPdf = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.knjigeGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.knjigeBindingSource)).BeginInit();
@@ -85,6 +87,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnPdf);
+            this.groupBox1.Controls.Add(this.btnShowSveKnjigeReport);
             this.groupBox1.Controls.Add(this.pretragaBtn);
             this.groupBox1.Controls.Add(this.kkategorijaCombo);
             this.groupBox1.Controls.Add(this.knazivTxt);
@@ -96,6 +100,16 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pretraga";
+            // 
+            // btnShowSveKnjigeReport
+            // 
+            this.btnShowSveKnjigeReport.Location = new System.Drawing.Point(3, 228);
+            this.btnShowSveKnjigeReport.Name = "btnShowSveKnjigeReport";
+            this.btnShowSveKnjigeReport.Size = new System.Drawing.Size(167, 42);
+            this.btnShowSveKnjigeReport.TabIndex = 4;
+            this.btnShowSveKnjigeReport.Text = "Sve knjige";
+            this.btnShowSveKnjigeReport.UseVisualStyleBackColor = true;
+            this.btnShowSveKnjigeReport.Click += new System.EventHandler(this.btnShowSveKnjigeReport_Click);
             // 
             // pretragaBtn
             // 
@@ -145,6 +159,7 @@
             // 
             this.knjigeGrid.AllowUserToAddRows = false;
             this.knjigeGrid.AllowUserToDeleteRows = false;
+            this.knjigeGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.knjigeGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.knjigeGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ISBN,
@@ -155,7 +170,7 @@
             this.knjigeGrid.Location = new System.Drawing.Point(12, 12);
             this.knjigeGrid.Name = "knjigeGrid";
             this.knjigeGrid.ReadOnly = true;
-            this.knjigeGrid.Size = new System.Drawing.Size(965, 282);
+            this.knjigeGrid.Size = new System.Drawing.Size(966, 282);
             this.knjigeGrid.TabIndex = 1;
             this.knjigeGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -230,6 +245,15 @@
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Posudba";
+            // 
+            // posudbeReportBtn
+            // 
+            this.posudbeReportBtn.Location = new System.Drawing.Point(410, 228);
+            this.posudbeReportBtn.Name = "posudbeReportBtn";
+            this.posudbeReportBtn.Size = new System.Drawing.Size(195, 36);
+            this.posudbeReportBtn.TabIndex = 8;
+            this.posudbeReportBtn.Text = "Posudbe od člana";
+            this.posudbeReportBtn.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
@@ -442,21 +466,21 @@
             this.knjiznicaManagementDataSetBindingSource1.DataSource = this.knjiznicaManagementDataSet;
             this.knjiznicaManagementDataSetBindingSource1.Position = 0;
             // 
-            // posudbeReportBtn
+            // btnPdf
             // 
-            this.posudbeReportBtn.Location = new System.Drawing.Point(410, 228);
-            this.posudbeReportBtn.Name = "posudbeReportBtn";
-            this.posudbeReportBtn.Size = new System.Drawing.Size(195, 36);
-            this.posudbeReportBtn.TabIndex = 8;
-            this.posudbeReportBtn.Text = "Posudbe od člana";
-            this.posudbeReportBtn.UseVisualStyleBackColor = true;
-            this.posudbeReportBtn.Click += new System.EventHandler(this.posudbeReportBtn_Click);
+            this.btnPdf.Location = new System.Drawing.Point(170, 228);
+            this.btnPdf.Name = "btnPdf";
+            this.btnPdf.Size = new System.Drawing.Size(167, 42);
+            this.btnPdf.TabIndex = 4;
+            this.btnPdf.Text = "Export PDF";
+            this.btnPdf.UseVisualStyleBackColor = true;
+            this.btnPdf.Click += new System.EventHandler(this.btnPdf_Click);
             // 
             // PosudbaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(982, 627);
+            this.ClientSize = new System.Drawing.Size(983, 627);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.knjigeGrid);
             this.Controls.Add(this.groupBox1);
@@ -526,5 +550,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button posudbeReportBtn;
+        private System.Windows.Forms.Button btnShowSveKnjigeReport;
+        private System.Windows.Forms.Button btnPdf;
     }
 }
