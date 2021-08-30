@@ -24,18 +24,20 @@ namespace NtpProjekt.Forme
 
         private void btnReg_Click(object sender, EventArgs e)
         {
-            //if (korisnickoTxt.Text != string.Empty && lozinkaPonTxt.Text != string.Empty && lozinkaTxt.Text != string.Empty)
-            //{
-            //    if (lozinkaTxt.Text == lozinkaPonTxt.Text)
-            //    {
-            //        adm = new admin();
-            //        adm.korisnickoIme = korisnickoTxt.Text;
-            //        adm.lozinka = sh.Enkriptiraj(lozinkaTxt.Text);
+            if (korisnickoTxt.Text != string.Empty && lozinkaPonTxt.Text != string.Empty && lozinkaTxt.Text != string.Empty)
+            {
+                if (lozinkaTxt.Text == lozinkaPonTxt.Text)
+                {
+                    adm = new admin();
+                    adm.korisnickoIme = korisnickoTxt.Text;
+                    sh.dekriptiraniPodatak = lozinkaTxt.Text;
+                    sh.Enkriptiraj();
+                    adm.lozinka = sh.enkriptiraniPodatak;
 
-            //        ent.admin.Add(adm);
-            //        ent.SaveChanges();
-            //    }
-            //}
+                    ent.admin.Add(adm);
+                    ent.SaveChanges();
+                }
+            }
         }
     }
 }

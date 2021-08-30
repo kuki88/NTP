@@ -45,5 +45,23 @@ namespace NtpProjekt.Services
                 //}
             }
         }
+
+        //public async static Knjige TraziKnjigu(string isbn)
+        //{
+        //    Knjige odgovor;
+        //    HttpContent content = new StringContent(isbn);
+
+        //    using (HttpClient client = new HttpClient())
+        //    {
+        //        client.BaseAddress = new Uri("http://localhost:1562/api/");
+        //        client.DefaultRequestHeaders.Accept.Clear();
+        //        client.DefaultRequestHeaders.Accept.Add(
+        //        new MediaTypeWithQualityHeaderValue("application/json"));
+
+        //        odgovor = await client.GetAsync("Values/GetKnjigaByISBN");
+        //    }
+
+        //    return odgovor;
+        //}
     }
 }

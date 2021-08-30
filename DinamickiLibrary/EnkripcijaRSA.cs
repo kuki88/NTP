@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NtpProjekt;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
@@ -18,11 +19,8 @@ namespace DinamickiLibrary
         {
             try
             {
-                using (RSACryptoServiceProvider rsa = new RSACryptoServiceProvider())
-                {
-                    rsa.ImportParameters(parametarKey);
-                    enkriptiraniPodatak = rsa.Encrypt(byteConverter.GetBytes(podatakZaKriptiranje), OAEPP);
-                }
+                Globals.RSA.ImportParameters(parametarKey);
+                enkriptiraniPodatak = Globals.RSA.Encrypt(byteConverter.GetBytes(podatakZaKriptiranje), OAEPP);
             }
             catch (CryptographicException e)
             {
@@ -34,17 +32,14 @@ namespace DinamickiLibrary
         {
             try
             {
-                using (RSACryptoServiceProvider rsa = new RSACryptoServiceProvider())
-                {
-                    rsa.ImportParameters(parametarKey);
-                    dekriptiraniPodatak = byteConverter.GetString(rsa.Decrypt(enkriptiraniPodatak, OAEPP));
-                }
+                Globals.RSA.ImportParameters(parametarKey);
+                var aa = Globals.RSA.Decrypt(enkriptiraniPodatak, OAEPP);
+                dekriptiraniPodatak = byteConverter.GetString(aa);
             }
             catch (CryptographicException e)
             {
                 Console.WriteLine(e.Message);
             }
-
         }
     }
 }

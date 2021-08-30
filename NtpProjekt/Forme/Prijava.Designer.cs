@@ -28,69 +28,70 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PrijavaForm));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.korisnickoTxt = new System.Windows.Forms.TextBox();
             this.lozinkaTxt = new System.Windows.Forms.TextBox();
             this.prijavaBtn = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(40, 32);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Korisničko ime:";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(40, 101);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Lozinka:";
             // 
             // korisnickoTxt
             // 
-            this.korisnickoTxt.Location = new System.Drawing.Point(43, 49);
+            resources.ApplyResources(this.korisnickoTxt, "korisnickoTxt");
             this.korisnickoTxt.Name = "korisnickoTxt";
-            this.korisnickoTxt.Size = new System.Drawing.Size(175, 20);
-            this.korisnickoTxt.TabIndex = 0;
             // 
             // lozinkaTxt
             // 
-            this.lozinkaTxt.Location = new System.Drawing.Point(43, 117);
+            resources.ApplyResources(this.lozinkaTxt, "lozinkaTxt");
             this.lozinkaTxt.Name = "lozinkaTxt";
-            this.lozinkaTxt.PasswordChar = '*';
-            this.lozinkaTxt.Size = new System.Drawing.Size(175, 20);
-            this.lozinkaTxt.TabIndex = 1;
             // 
             // prijavaBtn
             // 
-            this.prijavaBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.prijavaBtn.Location = new System.Drawing.Point(0, 166);
+            resources.ApplyResources(this.prijavaBtn, "prijavaBtn");
             this.prijavaBtn.Name = "prijavaBtn";
-            this.prijavaBtn.Size = new System.Drawing.Size(258, 52);
-            this.prijavaBtn.TabIndex = 2;
-            this.prijavaBtn.Text = "Prijava";
             this.prijavaBtn.UseVisualStyleBackColor = true;
             this.prijavaBtn.Click += new System.EventHandler(this.prijavaBtn_Click);
             // 
+            // comboBox1
+            // 
+            resources.ApplyResources(this.comboBox1, "comboBox1");
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            resources.GetString("comboBox1.Items"),
+            resources.GetString("comboBox1.Items1")});
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
             // PrijavaForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(258, 218);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.prijavaBtn);
             this.Controls.Add(this.lozinkaTxt);
             this.Controls.Add(this.korisnickoTxt);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "PrijavaForm";
-            this.Text = "Prijava";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -103,5 +104,7 @@
         private System.Windows.Forms.TextBox korisnickoTxt;
         private System.Windows.Forms.TextBox lozinkaTxt;
         private System.Windows.Forms.Button prijavaBtn;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label3;
     }
 }

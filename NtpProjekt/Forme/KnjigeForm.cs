@@ -40,7 +40,9 @@ namespace NtpProjekt.Forme
                     }
                     knjiga.NazivKnjige = dNazivTxt.Text;
                     knjiga.Autor = dAutorTxt.Text;
-                    
+
+                    obj.Knjige.Add(knjiga);
+                    obj.SaveChanges();
                     HttpService.DodajKnjigu(JsonConvert.SerializeObject(knjiga));
                 }
             }
@@ -60,6 +62,8 @@ namespace NtpProjekt.Forme
 
         private void traziBtn_Click(object sender, EventArgs e)
         {
+            //HttpService.TraziKnjigu(uIsbnTxt.Text);
+
             var trazeni = obj.Knjige.Where(x => x.ISBN == uIsbnTxt.Text).FirstOrDefault();
             if(trazeni != null)
             {

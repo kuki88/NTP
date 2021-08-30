@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DinamickiLibrary;
@@ -24,31 +25,51 @@ namespace NtpProjekt
 
         private void prijavaBtn_Click(object sender, EventArgs e)
         {
-            //RestClient rs = new RestClient();
-            //MessageBox.Show(rs.napraviZahtjev());
+            RestClient rs = new RestClient();
+            MessageBox.Show(rs.napraviZahtjev());
 
-            //KnjiznicaEntities obj = new KnjiznicaEntities();
-            //if (korisnickoTxt.Text != string.Empty && lozinkaTxt.Text != string.Empty)
-            //{
+            KnjiznicaEntities obj = new KnjiznicaEntities();
+            if (korisnickoTxt.Text != string.Empty && lozinkaTxt.Text != string.Empty)
+            {
 
-            //    var user = obj.admin.Where(x => x.korisnickoIme.Equals(korisnickoTxt.Text)).FirstOrDefault();
+                var user = obj.admin.Where(x => x.korisnickoIme.Equals(korisnickoTxt.Text)).FirstOrDefault();
 
-            //    if (user != null)
-            //    {
-            //        es.dekriptiraniPodatak = lozinkaTxt.Text;
-            //        es.Enkriptiraj();
-            //        if (user.lozinka.Equals(es.enkriptiraniPodatak))
-            //        {
-            MainMenu main = new MainMenu(new admin());
-            this.Hide();
-            main.ShowDialog();
+                if (user != null)
+                {
+                    es.dekriptiraniPodatak = lozinkaTxt.Text;
+                    es.Enkriptiraj();
+                    if (user.lozinka.Equals(es.enkriptiraniPodatak))
+                    {
+                        MainMenu main = new MainMenu(new admin());
+                        this.Hide();
+                        main.ShowDialog();
 
-            this.Close();
-            //        }
-            //        else MessageBox.Show("Neuspješna prijava! (Pogrešna lozinka)");
-            //    }
-            //    else MessageBox.Show("Pogrešno korisničko ime!");
-            //}
+                        this.Close();
+                    }
+                    else MessageBox.Show("Neuspješna prijava! (Pogrešna lozinka)");
+                }
+                else MessageBox.Show("Pogrešno korisničko ime!");
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (comboBox1.SelectedIndex)
+            {
+                case 0:
+                    Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("hr");
+                    this.Controls.Clear();
+                    InitializeComponent();
+                    break;
+                case 1:
+                    Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en");
+                    this.Controls.Clear();
+                    InitializeComponent();
+                    break;
+                default:
+                    break;
+            }
+
         }
     }
 }

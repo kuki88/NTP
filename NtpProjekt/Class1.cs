@@ -2,6 +2,7 @@
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 
 namespace NtpProjekt
@@ -14,105 +15,65 @@ namespace NtpProjekt
         public string Category { get; set; }
     }
 
-    class Program1
+    public class Program1
     {
-        static HttpClient client = new HttpClient();
-
-        static void ShowProduct(Product product)
+        public static byte[] RSAEncrypt(byte[] DataToEncrypt, RSAParameters RSAKeyInfo, bool DoOAEPPadding)
         {
-            Console.WriteLine($"Name: {product.Name}\tPrice: " +
-                $"{product.Price}\tCategory: {product.Category}");
-        }
-
-        static async Task<Uri> CreateProductAsync(Product product)
-        {
-            HttpResponseMessage response = await client.PostAsJsonAsync(
-                "api/products", product);
-            response.EnsureSuccessStatusCode();
-
-            // return URI of the created resource.
-            return response.Headers.Location;
-        }
-
-        static async Task<Product> GetProductAsync(string path)
-        {
-            Product product = null;
-            HttpResponseMessage response = await client.GetAsync(path);
-            if (response.IsSuccessStatusCode)
-            {
-                product = await response.Content.ReadAsAsync<Product>();
-            }
-            return product;
-        }
-
-        static async Task<Product> UpdateProductAsync(Product product)
-        {
-            HttpResponseMessage response = await client.PutAsJsonAsync(
-                $"api/products/{product.Id}", product);
-            response.EnsureSuccessStatusCode();
-
-            // Deserialize the updated product from the response body.
-            product = await response.Content.ReadAsAsync<Product>();
-            return product;
-        }
-
-        static async Task<HttpStatusCode> DeleteProductAsync(string id)
-        {
-            HttpResponseMessage response = await client.DeleteAsync(
-                $"api/products/{id}");
-            return response.StatusCode;
-        }
-
-        //static void Main()
-        //{
-        //    RunAsync().GetAwaiter().GetResult();
-        //}
-
-        static async Task RunAsync()
-        {
-            // Update port # in the following line.
-            client.BaseAddress = new Uri("http://localhost:64195/");
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
-
             try
             {
-                // Create a new product
-                Product product = new Product
+                byte[] encryptedData;
+                //Create a new instance of RSACryptoServiceProvider.
+                using (RSACryptoServiceProvider RSA = new RSACryptoServiceProvider())
                 {
-                    Name = "Gizmo",
-                    Price = 100,
-                    Category = "Widgets"
-                };
 
-                var url = await CreateProductAsync(product);
-                Console.WriteLine($"Created at {url}");
+                    //Import the RSA Key information. This only needs
+                    //toinclude the public key information.
+                    RSA.ImportParameters(RSAKeyInfo);
 
-                // Get the product
-                product = await GetProductAsync(url.PathAndQuery);
-                ShowProduct(product);
-
-                // Update the product
-                Console.WriteLine("Updating price...");
-                product.Price = 80;
-                await UpdateProductAsync(product);
-
-                // Get the updated product
-                product = await GetProductAsync(url.PathAndQuery);
-                ShowProduct(product);
-
-                // Delete the product
-                var statusCode = await DeleteProductAsync(product.Id);
-                Console.WriteLine($"Deleted (HTTP Status = {(int)statusCode})");
-
+                    //Encrypt the passed byte array and specify OAEP padding.  
+                    //OAEP padding is only available on Microsoft Windows XP or
+                    //later.  
+                    encryptedData = RSA.Encrypt(DataToEncrypt, DoOAEPPadding);
+                }
+                return encryptedData;
             }
-            catch (Exception e)
+            //Catch and display a CryptographicException  
+            //to the console.
+            catch (CryptographicException e)
             {
                 Console.WriteLine(e.Message);
-            }
 
-            Console.ReadLine();
+                return null;
+            }
+        }
+
+        public static byte[] RSADecrypt(byte[] DataToDecrypt, RSAParameters RSAKeyInfo, bool DoOAEPPadding)
+        {
+            try
+            {
+                byte[] decryptedData;
+                //Create a new instance of RSACryptoServiceProvider.
+                using (RSACryptoServiceProvider RSA = new RSACryptoServiceProvider())
+                {
+                    //Import the RSA Key information. This needs
+                    //to include the private key information.
+                    RSA.ImportParameters(RSAKeyInfo);
+
+                    //Decrypt the passed byte array and specify OAEP padding.  
+                    //OAEP padding is only available on Microsoft Windows XP or
+                    //later.  
+                    decryptedData = RSA.Decrypt(DataToDecrypt, DoOAEPPadding);
+                }
+                return decryptedData;
+            }
+            //Catch and display a CryptographicException  
+            //to the console.
+            catch (CryptographicException e)
+            {
+                Console.WriteLine(e.ToString());
+
+                return null;
+            }
         }
     }
 }

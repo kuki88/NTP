@@ -259,6 +259,21 @@
     <Compile Include="Services\DatabaseService.cs" />
     <Compile Include="Services\FastReportService.cs" />
     <Compile Include="Services\HttpService.cs" />
+    <EmbeddedResource Include="Forme\Clanovi.en.resx">
+      <DependentUpon>Clanovi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\KnjigeForm.en.resx">
+      <DependentUpon>KnjigeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\MainMenu.en.resx">
+      <DependentUpon>MainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\PosudbaPretraga.en.resx">
+      <DependentUpon>PosudbaPretraga.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Prijava.en.resx">
+      <DependentUpon>Prijava.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forme\Registracija.resx">
       <DependentUpon>Registracija.cs</DependentUpon>
     </EmbeddedResource>
@@ -277,11 +292,20 @@
     <EmbeddedResource Include="Forme\RESTForm.resx">
       <DependentUpon>RESTForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forme\UrediClanForm.en.resx">
+      <DependentUpon>UrediClanForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forme\UrediClanForm.resx">
       <DependentUpon>UrediClanForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forme\UrediKnjigeForm.en.resx">
+      <DependentUpon>UrediKnjigeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forme\UrediKnjigeForm.resx">
       <DependentUpon>UrediKnjigeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\VracanjeKnjige.en.resx">
+      <DependentUpon>VracanjeKnjige.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

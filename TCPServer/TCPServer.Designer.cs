@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.infoTxt = new System.Windows.Forms.TextBox();
-            this.posaljiBtn = new System.Windows.Forms.Button();
-            this.spojiBtn = new System.Windows.Forms.Button();
             this.porukaTxt = new System.Windows.Forms.TextBox();
             this.serverIpTxt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -48,26 +46,6 @@
             this.infoTxt.Name = "infoTxt";
             this.infoTxt.Size = new System.Drawing.Size(349, 146);
             this.infoTxt.TabIndex = 33;
-            // 
-            // posaljiBtn
-            // 
-            this.posaljiBtn.Location = new System.Drawing.Point(266, 221);
-            this.posaljiBtn.Name = "posaljiBtn";
-            this.posaljiBtn.Size = new System.Drawing.Size(75, 23);
-            this.posaljiBtn.TabIndex = 31;
-            this.posaljiBtn.Text = "Pošalji";
-            this.posaljiBtn.UseVisualStyleBackColor = true;
-            this.posaljiBtn.Click += new System.EventHandler(this.posaljiBtn_Click);
-            // 
-            // spojiBtn
-            // 
-            this.spojiBtn.Location = new System.Drawing.Point(347, 221);
-            this.spojiBtn.Name = "spojiBtn";
-            this.spojiBtn.Size = new System.Drawing.Size(75, 23);
-            this.spojiBtn.TabIndex = 32;
-            this.spojiBtn.Text = "Uključi";
-            this.spojiBtn.UseVisualStyleBackColor = true;
-            this.spojiBtn.Click += new System.EventHandler(this.spojiBtn_Click);
             // 
             // porukaTxt
             // 
@@ -125,7 +103,7 @@
             // iskljuciBtn
             // 
             this.iskljuciBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.iskljuciBtn.Location = new System.Drawing.Point(545, 219);
+            this.iskljuciBtn.Location = new System.Drawing.Point(545, 194);
             this.iskljuciBtn.Name = "iskljuciBtn";
             this.iskljuciBtn.Size = new System.Drawing.Size(75, 23);
             this.iskljuciBtn.TabIndex = 32;
@@ -137,12 +115,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(632, 254);
+            this.ClientSize = new System.Drawing.Size(632, 229);
             this.Controls.Add(this.spojeniKlijentTxt);
             this.Controls.Add(this.infoTxt);
-            this.Controls.Add(this.posaljiBtn);
             this.Controls.Add(this.iskljuciBtn);
-            this.Controls.Add(this.spojiBtn);
             this.Controls.Add(this.porukaTxt);
             this.Controls.Add(this.serverIpTxt);
             this.Controls.Add(this.label2);
@@ -159,8 +135,6 @@
         #endregion
 
         private System.Windows.Forms.TextBox infoTxt;
-        private System.Windows.Forms.Button posaljiBtn;
-        private System.Windows.Forms.Button spojiBtn;
         private System.Windows.Forms.TextBox porukaTxt;
         private System.Windows.Forms.TextBox serverIpTxt;
         private System.Windows.Forms.Label label2;

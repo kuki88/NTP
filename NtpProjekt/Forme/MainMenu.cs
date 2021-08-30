@@ -137,7 +137,6 @@ namespace NtpProjekt
             else registar.SetValue("FullScreen", false);
             registar.SetValue("Width", this.Width);
             registar.SetValue("Height", this.Height);
-            registar.SetValue("FontSize", this.label1.Font.SizeInPoints);
             registar.Close();
         }
 
@@ -225,18 +224,25 @@ namespace NtpProjekt
             {
                 if (!string.IsNullOrEmpty(porukaTxt.Text))
                 {
-                    rsa.podatakZaKriptiranje = porukaTxt.Text;
-
-                    using (RSACryptoServiceProvider RSA = new RSACryptoServiceProvider())
+                    client.Send(porukaTxt.Text);
+                    using (RSACryptoServiceProvider csp = new RSACryptoServiceProvider())
                     {
-                        rsa.RSAEnkripcija(RSA.ExportParameters(false), false);
+                        rsa.podatakZaKriptiranje = porukaTxt.Text;
+
+                        rsa.RSAEnkripcija(csp.ExportParameters(false), false);
+
+                        client.Send(rsa.enkriptiraniPodatak);
+
+                        rsa.RSADekripcija(csp.ExportParameters(true), false);
+                        MessageBox.Show(rsa.dekriptiraniPodatak);
                     }
 
-                    client.Send(rsa.enkriptiraniPodatak);
                     porukaTxt.Text += $"Me: {porukaTxt.Text}{Environment.NewLine}";
                     porukaTxt.Text = string.Empty;
                 }
             }
+
+
         }
     }
 }

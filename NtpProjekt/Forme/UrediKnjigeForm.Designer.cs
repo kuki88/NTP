@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UrediKnjigeForm));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.kolicinaNum = new System.Windows.Forms.NumericUpDown();
+            this.ukloniBtn = new System.Windows.Forms.Button();
             this.UrediBtn = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.uAutorTxt = new System.Windows.Forms.TextBox();
@@ -39,14 +42,13 @@
             this.label7 = new System.Windows.Forms.Label();
             this.uIsbnTxt = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.ukloniBtn = new System.Windows.Forms.Button();
-            this.kolicinaNum = new System.Windows.Forms.NumericUpDown();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kolicinaNum)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox2
             // 
+            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Controls.Add(this.kolicinaNum);
             this.groupBox2.Controls.Add(this.ukloniBtn);
             this.groupBox2.Controls.Add(this.UrediBtn);
@@ -59,121 +61,79 @@
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.uIsbnTxt);
             this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(332, 254);
-            this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Ukloni knjigu";
+            // 
+            // kolicinaNum
+            // 
+            resources.ApplyResources(this.kolicinaNum, "kolicinaNum");
+            this.kolicinaNum.Name = "kolicinaNum";
+            // 
+            // ukloniBtn
+            // 
+            resources.ApplyResources(this.ukloniBtn, "ukloniBtn");
+            this.ukloniBtn.Name = "ukloniBtn";
+            this.ukloniBtn.UseVisualStyleBackColor = true;
+            this.ukloniBtn.Click += new System.EventHandler(this.ukloniBtn_Click);
             // 
             // UrediBtn
             // 
-            this.UrediBtn.Location = new System.Drawing.Point(0, 216);
+            resources.ApplyResources(this.UrediBtn, "UrediBtn");
             this.UrediBtn.Name = "UrediBtn";
-            this.UrediBtn.Size = new System.Drawing.Size(160, 38);
-            this.UrediBtn.TabIndex = 2;
-            this.UrediBtn.Text = "Uredi";
             this.UrediBtn.UseVisualStyleBackColor = true;
             this.UrediBtn.Click += new System.EventHandler(this.UrediBtn_Click);
             // 
             // label9
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(12, 138);
+            resources.ApplyResources(this.label9, "label9");
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(44, 13);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "Količina";
             // 
             // uAutorTxt
             // 
-            this.uAutorTxt.Location = new System.Drawing.Point(132, 171);
+            resources.ApplyResources(this.uAutorTxt, "uAutorTxt");
             this.uAutorTxt.Name = "uAutorTxt";
-            this.uAutorTxt.Size = new System.Drawing.Size(194, 20);
-            this.uAutorTxt.TabIndex = 1;
             // 
             // label11
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(12, 174);
+            resources.ApplyResources(this.label11, "label11");
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(32, 13);
-            this.label11.TabIndex = 0;
-            this.label11.Text = "Autor";
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 101);
+            resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(54, 13);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Kategorija";
             // 
             // ukategorijaTxt
             // 
-            this.ukategorijaTxt.Location = new System.Drawing.Point(132, 98);
+            resources.ApplyResources(this.ukategorijaTxt, "ukategorijaTxt");
             this.ukategorijaTxt.Name = "ukategorijaTxt";
-            this.ukategorijaTxt.Size = new System.Drawing.Size(194, 20);
-            this.ukategorijaTxt.TabIndex = 1;
             // 
             // uNazivTxt
             // 
-            this.uNazivTxt.Location = new System.Drawing.Point(132, 64);
+            resources.ApplyResources(this.uNazivTxt, "uNazivTxt");
             this.uNazivTxt.Name = "uNazivTxt";
-            this.uNazivTxt.Size = new System.Drawing.Size(194, 20);
-            this.uNazivTxt.TabIndex = 1;
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 67);
+            resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(34, 13);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Naziv";
             // 
             // uIsbnTxt
             // 
-            this.uIsbnTxt.Location = new System.Drawing.Point(132, 28);
+            resources.ApplyResources(this.uIsbnTxt, "uIsbnTxt");
             this.uIsbnTxt.Name = "uIsbnTxt";
-            this.uIsbnTxt.Size = new System.Drawing.Size(194, 20);
-            this.uIsbnTxt.TabIndex = 1;
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 31);
+            resources.ApplyResources(this.label8, "label8");
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(32, 13);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "ISBN";
-            // 
-            // ukloniBtn
-            // 
-            this.ukloniBtn.Location = new System.Drawing.Point(172, 216);
-            this.ukloniBtn.Name = "ukloniBtn";
-            this.ukloniBtn.Size = new System.Drawing.Size(160, 38);
-            this.ukloniBtn.TabIndex = 2;
-            this.ukloniBtn.Text = "Ukloni";
-            this.ukloniBtn.UseVisualStyleBackColor = true;
-            this.ukloniBtn.Click += new System.EventHandler(this.ukloniBtn_Click);
-            // 
-            // kolicinaNum
-            // 
-            this.kolicinaNum.Location = new System.Drawing.Point(132, 136);
-            this.kolicinaNum.Name = "kolicinaNum";
-            this.kolicinaNum.Size = new System.Drawing.Size(194, 20);
-            this.kolicinaNum.TabIndex = 3;
             // 
             // UrediKnjigeForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(364, 281);
             this.Controls.Add(this.groupBox2);
             this.Name = "UrediKnjigeForm";
-            this.Text = "UrediKnjigeForm";
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kolicinaNum)).EndInit();
